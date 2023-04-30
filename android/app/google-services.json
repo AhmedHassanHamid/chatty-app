@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "891586164230",
+    "project_id": "flutter-video-audio-chat-d15db",
+    "storage_bucket": "flutter-video-audio-chat-d15db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891586164230:android:47221805f19f936bcdf587",
+        "android_client_info": {
+          "package_name": "com.dbestech.chatty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891586164230-pvg461rt57tg1f0mootdm5gjqb3tkp2d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dbestech.chatty",
+            "certificate_hash": "9114cf0d5ad85db1d862265bd343e0316d9de515"
+          }
+        },
+        {
+          "client_id": "891586164230-rghcp52q36luca6f122p9aismcqq4tvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUXUYYDa78WkIWz4NAiUxKpyvHWFRTlJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891586164230-rghcp52q36luca6f122p9aismcqq4tvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
