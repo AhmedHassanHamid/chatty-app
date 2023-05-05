@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../pages/frame/welcome/index.dart';
 import '../../pages/frame/sign_in/index.dart';
 import '../../pages/message/index.dart';
+import '../../pages/profile/index.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -20,7 +21,7 @@ class AppPages {
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
     ),
-    
+
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => const SignInPage(),
@@ -45,7 +46,7 @@ class AppPages {
     GetPage(name: AppRoutes.SendCode, page: () => SendCodePage(), binding: SendCodeBinding()),
     // 首页
     GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),
-    */ //消息
+    */ //message page
     GetPage(
       name: AppRoutes.Message,
       page: () => const MessagePage(),
@@ -54,9 +55,13 @@ class AppPages {
         RouteAuthMiddleware(priority: 1),
       ],
     ),
+
+    //Profile section
+    GetPage(
+        name: AppRoutes.Profile,
+        page: () => ProfilePage(),
+        binding: ProfileBinding()),
     /*
-    //我的
-    GetPage(name: AppRoutes.Profile, page: () => ProfilePage(), binding: ProfileBinding()),
     //聊天详情
     GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
 

@@ -1,5 +1,6 @@
 import 'package:chatty/common/routes/pages.dart';
 import 'package:chatty/common/store/store.dart';
+import 'package:chatty/common/style/style.dart';
 import 'package:chatty/global.dart';
 import 'package:chatty/pages/frame/welcome/index.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.light,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
       ),
