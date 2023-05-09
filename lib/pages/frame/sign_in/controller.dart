@@ -1,4 +1,6 @@
 import 'package:chatty/common/entities/entities.dart';
+import 'package:chatty/common/store/store.dart';
+import 'package:chatty/common/utils/http.dart';
 import 'package:chatty/pages/frame/sign_in/state.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -37,7 +39,12 @@ class SignInController extends GetxController {
     }
   }
 
-  asyncPostAllData(){
+  asyncPostAllData() async{
+   var response = await HttpUtil().get(
+      '/api/index'
+    );
+    print(response);
+    UserStore.to.setIsLogin = true;
     Get.offAllNamed(AppRoutes.Message);
   }
 }
