@@ -9,7 +9,6 @@ import 'firebase_options.dart';
 
 class Global{
   static Future<void> init() async {
-    //EasyLoading.init();
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

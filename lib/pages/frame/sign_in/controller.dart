@@ -1,7 +1,13 @@
+import 'dart:convert';
+
+import 'package:chatty/common/apis/apis.dart';
 import 'package:chatty/common/entities/entities.dart';
 import 'package:chatty/common/store/store.dart';
 import 'package:chatty/common/utils/http.dart';
+import 'package:chatty/common/widgets/toast.dart';
 import 'package:chatty/pages/frame/sign_in/state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -29,7 +35,8 @@ class SignInController extends GetxController {
           loginPanellRequestEntity.email = email;
           loginPanellRequestEntity.open_id = id;
           loginPanellRequestEntity.type= 2;
-          asyncPostAllData();
+          print(jsonEncode(loginPanellRequestEntity));
+          asyncPostAllData(loginPanellRequestEntity);
         }
       } else {
         print("...login type not sure ..");
@@ -39,12 +46,21 @@ class SignInController extends GetxController {
     }
   }
 
-  asyncPostAllData() async{
-   var response = await HttpUtil().get(
-      '/api/index'
+  asyncPostAllData(LoginRequestEntity loginPanellRequestEntity) async{
+    EasyLoading.show(
+      indicator: const CircularProgressIndicator(),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
     );
-    print(response);
-    UserStore.to.setIsLogin = true;
+    var result = await UserAPI.Login(params: loginPanellRequestEntity);
+    if (result.code==0) {
+      await UserStore.to.saveProfile(result.data!);
+      EasyLoading.dismiss();
+    }else{
+      EasyLoading.dismiss();
+      toastInfo(msg: "Internet error");
+
+    }
     Get.offAllNamed(AppRoutes.Message);
   }
 }

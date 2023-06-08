@@ -7,6 +7,7 @@ import '../../pages/frame/welcome/index.dart';
 import '../../pages/frame/sign_in/index.dart';
 import '../../pages/message/index.dart';
 import '../../pages/profile/index.dart';
+import '../../pages/contact/index.dart';
 import 'routes.dart';
 
 class AppPages {
@@ -44,9 +45,12 @@ class AppPages {
     GetPage(name: AppRoutes.Forgot, page: () => ForgotPage(), binding: ForgotBinding()),
     GetPage(name: AppRoutes.Phone, page: () => PhonePage(), binding: PhoneBinding()),
     GetPage(name: AppRoutes.SendCode, page: () => SendCodePage(), binding: SendCodeBinding()),
-    // 首页
+    */
+
+    // contact page
     GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),
-    */ //message page
+
+    //message page
     GetPage(
       name: AppRoutes.Message,
       page: () => const MessagePage(),

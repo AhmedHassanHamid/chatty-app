@@ -9,9 +9,9 @@ import '../../../common/values/colors.dart';
 class WelcomePage extends GetView<WelcomeController> {
   const WelcomePage({super.key});
 
-  Widget _buildPageHeadTitle(String title){
+  Widget _buildPageHeadTitle(String title) {
     return Container(
-      margin: EdgeInsets.only(top: 360.h,left: 100.w),
+      margin: EdgeInsets.only(top: 360.h, left: 100.w),
       child: Text(
         title,
         style: TextStyle(
