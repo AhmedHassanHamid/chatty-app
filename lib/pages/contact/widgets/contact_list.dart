@@ -12,7 +12,9 @@ class ContactList extends GetView<ContactController> {
 
   Widget _buildListItem(ContactItem item) {
     return Container(
-      padding: EdgeInsets.only(top: 10.h,),
+      padding: EdgeInsets.only(
+        top: 10.h,
+      ),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
@@ -22,13 +24,27 @@ class ContactList extends GetView<ContactController> {
         ),
       ),
       child: InkWell(
-        onTap: () {},
-        child: Row(children: [
+        onTap: () {
+          controller.goChat(item);
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           Container(
             width: 44.w,
             height: 44.w,
             decoration: BoxDecoration(
               color: AppColors.primarySecondaryBackground,
+              borderRadius: BorderRadius.all(Radius.circular(22.w)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                ),
+              ],
             ),
             child: CachedNetworkImage(
               imageUrl: item.avatar!,
@@ -36,10 +52,41 @@ class ContactList extends GetView<ContactController> {
               width: 44.w,
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(22.w)),
-                  image: DecorationImage(image: imageProvider)
-                ),
+                    borderRadius: BorderRadius.all(Radius.circular(22.w)),
+                    image: DecorationImage(image: imageProvider)),
               ),
+            ),
+          ),
+          Container(
+            width: 275.w,
+            padding:
+                EdgeInsets.only(top: 10.w, left: 10.w, right: 0.w, bottom: 0.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 200.w,
+                  height: 42.w,
+                  child: Text(
+                    "${item.name}",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.thirdElement,
+                      fontSize: 16.sp,
+                      fontFamily: "Avenir",
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  margin: EdgeInsets.only(top: 7.w),
+                  width: 12.w,
+                  height: 12.w,
+                  child: Image.asset("assets/icons/ang.png"),
+                ),
+              ],
             ),
           ),
         ]),
@@ -58,7 +105,7 @@ class ContactList extends GetView<ContactController> {
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   var item = controller.state.contactList[index];
-                  print(item.name!+'///////////////////////////');
+                  print(item.name! + '///////////////////////////');
                   return _buildListItem(item);
                 },
                 childCount: controller.state.contactList.length,
